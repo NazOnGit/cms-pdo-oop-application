@@ -38,7 +38,7 @@ if (isPostRequest()) {
   if ($user->register($username, $email, $password)) {
     redirect("pages/guest/login.php");
   } else {
-    echo "registration failed";
+    echo "registration has failed";
   }
 }
 ?>
