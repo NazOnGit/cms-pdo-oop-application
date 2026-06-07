@@ -1,0 +1,49 @@
+/*****************************/
+/* SETACTIVECLASS */
+/*****************************/
+.header-top__link.is-active {
+  color: #347ed9;
+}
+
+.header-top__wrapper {
+  padding: 2rem 0;
+  top: 0;
+  position: sticky;
+  width: 100%;
+  margin-bottom: 4.8rem;
+  background-color: #d6d6d6;
+  display: block;
+  z-index: 999;
+  border-bottom: 1px solid #303030;
+}
+
+.header-top__contents {
+  max-width: 140rem;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-top__navbar-left,
+.header-top__navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-top__list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.header-top__link {
+  color: inherit;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.header-top__link:hover {
+  color: #9d9d7e;
+}

@@ -1,0 +1,99 @@
+.login-page {
+  width: 100%;
+}
+
+.login-form__container {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 52rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.login-form__title {
+  margin-bottom: 2.4rem;
+  border-bottom: 1px #303030 solid;
+  display: inline-block;
+  color: #303030;
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+
+.login-form__input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.login-form__input-group {
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.login-form__label {
+  align-self: start;
+  font-weight: 400;
+  font-size: 1.4rem;
+  text-transform: capitalize;
+}
+
+.login-form__input {
+  width: 100%;
+  padding: 1.4rem;
+  border-radius: 5px;
+  border: 1px solid #c2c2c2;
+  font-size: 1.4rem;
+  background-color: #e4e4e4;
+}
+
+.login-form__input:focus {
+  outline: none;
+  border: 1px solid #4a5d73;
+}
+
+.login-form__btn {
+  width: 100%;
+  font-size: 1.6rem;
+}
+
+.register-btn__wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.register-text {
+  font-size: 1.4rem;
+  text-transform: none;
+}
+
+.register-link {
+  display: inline-block;
+  color: #303030;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.register-link:hover {
+  border-bottom: 1px solid #5d728b;
+}
+/* 
+DESIGN SYSTEM (SPACING / TYPOGRAPHY / LAYOUT)
+
+SPACING: 2px=0.2rem | 4px=0.4rem | 8px=0.8rem | 12px=1.2rem | 16px=1.6rem | 24px=2.4rem | 32px=3.2rem | 48px=4.8rem | 64px=6.4rem | 80px=8rem | 96px=9.6rem | 128px=12.8rem
+
+FONT: 10px=1rem | 12px=1.2rem | 14px=1.4rem | 16px=1.6rem | 18px=1.8rem | 20px=2rem | 24px=2.4rem | 30px=3rem | 36px=3.6rem | 44px=4.4rem | 52px=5.2rem | 62px=6.2rem | 74px=7.4rem | 86px=8.6rem | 98px=9.8rem
+
+LAYOUT: 640px=64rem | 768px=76.8rem | 960px=96rem | 1140px=114rem | 1200px=120rem | 1280px=128rem | 1440px=144rem | 1600px=160rem
+*/

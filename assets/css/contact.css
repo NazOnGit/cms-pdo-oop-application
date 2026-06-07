@@ -1,0 +1,129 @@
+.contact-page {
+  width: 100%;
+}
+
+.contact-page__wrapper {
+  width: 100%;
+  max-width: 114rem;
+  margin: 0 auto;
+}
+
+.contact-content {
+  /* outline: green 1px dashed; */
+  display: flex;
+  gap: 4rem;
+}
+
+.contact-content__column-1,
+.contact-content__column-2 {
+  /* outline: red 1px dashed; */
+  /* Makes both columns grow equally to fill available space */
+  /* Each column takes 50% of the container width */
+  /* If one column has more content, they still stay equal width */
+  flex: 1;
+  min-width: 280px; /* Prevents columns from getting too narrow */
+}
+
+.contact-title {
+  margin-bottom: 2.4rem;
+  color: #303030;
+  font-size: 3.6rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.form-group {
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.form-label {
+  align-self: start;
+  font-weight: 400;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
+.form-input {
+  width: 100%;
+  padding: 1.4rem;
+  border-radius: 5px;
+  border: 1px solid #c2c2c2;
+  font-size: 1.6rem;
+  background-color: #e4e4e4;
+}
+
+.form-input:focus {
+  outline: none;
+  border: 1px solid #4a5d73;
+}
+
+.contact-btn {
+  width: 100%;
+  /* padding: 1.8rem 3rem; */
+  font-size: 1.8rem;
+}
+
+.contact-text {
+  margin-bottom: 2.4rem;
+  font-size: 1.6rem;
+  text-transform: none;
+}
+
+.contact__info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.list-strong {
+  color: #5a5a5a;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+
+.list-link,
+.list-value {
+  color: #303030;
+  text-decoration: none;
+  font-size: 1.6rem;
+  text-transform: none;
+}
+
+.contact__social-links {
+  list-style: none;
+  display: flex;
+  gap: 2.4rem;
+}
+
+.social-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #5d728b;
+}
+
+/* 
+DESIGN SYSTEM (SPACING / TYPOGRAPHY / LAYOUT)
+
+SPACING: 2px=0.2rem | 4px=0.4rem | 8px=0.8rem | 12px=1.2rem | 16px=1.6rem | 24px=2.4rem | 32px=3.2rem | 48px=4.8rem | 64px=6.4rem | 80px=8rem | 96px=9.6rem | 128px=12.8rem
+
+FONT: 10px=1rem | 12px=1.2rem | 14px=1.4rem | 16px=1.6rem | 18px=1.8rem | 20px=2rem | 24px=2.4rem | 30px=3rem | 36px=3.6rem | 44px=4.4rem | 52px=5.2rem | 62px=6.2rem | 74px=7.4rem | 86px=8.6rem | 98px=9.8rem
+
+LAYOUT WIDTHS: 640px=64rem | 768px=76.8rem | 960px=96rem | 1140px=114rem | 1200px=120rem | 1280px=128rem | 1440px=144rem | 1600px=160rem
+*/
