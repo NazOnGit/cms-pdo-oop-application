@@ -1,14 +1,19 @@
 <?php
 // USER DATABASE OPERATIONS
-// Handles user-related database actions such as:
-// - registration
-// - authentication/login
+// Handles database interactions related to users, such as:
+// - creating/registering new user records
+// - authenticating user login credentials
+// - retrieving user data from database
+// - updating user information
 class User
 {
   private $conn;
   private $table = 'users';
 
-  // CONNECT TO USER TABLE IN DATABASE
+  // INITIALIZE DATABASE CONNECTION FOR USER OPERATIONS
+  // Creates a Database object,
+  // obtains a PDO connection object,
+  // and stores it in $this->conn for user-related queries.
   public function __construct()
   {
     $database = new Database();
