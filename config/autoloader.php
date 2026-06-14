@@ -6,23 +6,14 @@
 // PHP automatically calls this function and passes the class name
 // into $class_name.
 // Example:
-
 // $db = new Database();
-
 // PHP looks for the Database class definition.
-
 // If Database.php has not been loaded yet,
-
 // PHP automatically runs this autoloader and passes:
-
 // $class_name = "Database"
-
 // The autoloader then attempts to locate and load:
-
-// classes/Database.php
-
+// classes/Database.php where Database class is.
 // This removes the need to manually require class files
-
 // throughout the application.
 spl_autoload_register(function ($class_name) {
   // BUILD CLASSES FOLDER DIRECTORY PATH

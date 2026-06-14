@@ -25,7 +25,7 @@
         </li>
 
         <li>
-          <a href="index.php"
+          <a href="<?php echo base_url('/index.php'); ?>"
             class="header-top__link <?php echo setActiveClass('index.php'); ?>">
             view site
           </a>

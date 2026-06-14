@@ -10,6 +10,14 @@ class User
   private $conn;
   private $table = 'users';
 
+
+
+
+  // CONSTRUCTOR function __construct()
+  // The constructor is a special method that runs automatically when an object is instantiated.
+  // We use it here to automatically obtain a PDO database connection and store it in the User object's conn property.
+  // This ensures every User object starts with a working database connection.
+
   // INITIALIZE DATABASE CONNECTION FOR USER OPERATIONS
   // Creates a Database object,
   // obtains a PDO connection object,
@@ -41,5 +49,24 @@ class User
       return true;
     }
     return false;
+  }
+
+  // LOGIN USER
+  // Find user by email and verify login password.
+  public function login($email, $password)
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE email = :email";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    // Fetch matching database row as an object.
+    $user = $stmt->fetch(PDO::FETCH_OBJ);
+    // $password = raw password from login form.
+    // $user->password = hashed password stored in database.
+    // password = database password column name.
+    // Verify raw password matches stored hash.
+    if ($user && password_verify($password, $user->password)) {
+      return $user->id;
+    }
   }
 }

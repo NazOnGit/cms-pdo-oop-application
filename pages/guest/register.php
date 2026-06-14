@@ -35,6 +35,8 @@ if (isPostRequest()) {
 
   $user = new User();
 
+  // the register method is meant to take in arguements.
+  // view User class, register method for clarification 
   if ($user->register($username, $email, $password)) {
     redirect("pages/guest/login.php");
   } else {

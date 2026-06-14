@@ -1,62 +1,35 @@
 <?php
-
 // =========================================
 // QUICK REVIEW OF FUNCTIONS IN THIS PAGE
 // =========================================
-// 1. setActiveClass(): ‼️
 
-// Checks current page filename using $_SERVER['PHP_SELF'] and basename()
+// require/include PHP files
+// require_once ROOT_PATH . "/helpers/functions.php";
+// starts with "/" after ROOT_PATH
 
-// then returns active CSS class for current navigation link highlighting.
+// dynamic server filesystem path
+//base_path('helpers/functions.php');
+// no starting slash needed
+// ltrim() removes it if you accidentally write "/helpers/functions.php"
 
-// 2. base_url(): ‼️
+// normal browser page URL
+// base_url('pages/guest/login.php');
+// no starting slash needed
 
-// Creates a FULL browser website URL using protocol (http/https),
+// assets URL: CSS, JS, images, fonts
+// asset_url('css/index.css');
+// no starting slash needed
+// because function already enters assets/
 
-// current host/domain, PROJECT_DIR, and optional browser path.
+// uploads browser URL: <img src="">, download links
+// uploads_url('photo.jpg');
+// no starting slash needed
+// because function already enters uploads/
 
-// Used for href, src, redirects, assets, and browser-accessible URLs.
-
-// 3. base_path(): ‼️
-
-// Creates a FULL REAL server/computer filesystem path using __DIR__,
-
-// dirname(), PROJECT_DIR, DIRECTORY_SEPARATOR, and optional server path.
-
-// Used for require/include, uploads, deleting files, and filesystem operations.
-
-// 4. uploads_path(): ‼️
-
-// Creates a FULL REAL filesystem path specifically for storing files being uploaded into the 
-
-// uploads folder using base_path(), DIRECTORY_SEPARATOR, and optional upload filename.
-
-// Where is the file physically stored on the computer/server?
-
-// 5. uploads_url(): ‼️
-
-// Creates a FULL browser-accessible URL specifically for files inside uploads folder
-
-// using base_url() and optional upload filename.
-
-// 6. asset_url(): ‼️
-
-// Creates a FULL browser asset URL specifically for CSS, JS, images, and fonts
-
-// using base_url(), assets folder path, and optional asset path.
-
-// What website URL should the browser use to view this file?
-
-// 7. redirect(): ‼️
-
-// Redirects browser to another page URL using header('Location: '),
-
-// base_url(), and immediately stops script execution using exit.
-
-
-
-
-
+// uploads server path: move/delete/check uploaded files
+// uploads_path('photo.jpg');
+// no starting slash needed
+// because function already enters uploads/
 
 
 // ===========================
@@ -108,114 +81,21 @@ function base_url($path = "")
 // ======================================
 // 3. BUILD FULL SERVER FILE PATH FUNCTION
 // ======================================
-
-// Creates a FULL real filesystem path on the server/computer.
-
-// Unlike base_url(), this is NOT for browser links.
-
-// This is for PHP/server-side operations like:
-
+// Creates a full filesystem path from the project root.
+// Used for PHP server-side operations:
 // - require/include
-
 // - uploads
-
 // - deleting files
-
 // - checking if files exist
-
-// Example final result:
-
+//
+// Example:
 // /Applications/MAMP/htdocs/sql-pdo-oop-cms-application/uploads/image.jpg
-
 function base_path($path = "")
 {
-  // __DIR__ means:
-
-  // "the folder THIS current file lives in"
-
-  // Example:
-
-  // if this function is relatively inside:
-
-  // /config/init.php
-
-  // then:
-
-  // __DIR__
-
-  // becomes:
-
-  // /config
-
-  // dirname(__DIR__)
-
-  // means:
-
-  // "go UP one folder from the current folder"
-
-  // Example:
-
-  // /config
-
-  // ↓ go up
-
-  // /sql-pdo-oop-cms-application
-
-  // PROJECT_DIR
-
-  // is usually a constant storing project folder name.
-
-  // Example:
-
-  // sql-pdo-oop-cms-application
-
-  // DIRECTORY_SEPARATOR
-
-  // automatically uses the correct slash for the operating system.
-
-  // Windows:
-
-  // \
-
-  // Mac/Linux:
-
-  // /
-
-  // This makes paths safer across different systems.
-
-  // Combine everything together:
-
-  // project root path
-
-  // +
-
-  // operating system slash
-
-  // +
-
-  // project folder name
-
-
-  $rootPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . PROJECT_DIR;
-
-  // ltrim($path, DIRECTORY_SEPARATOR)
-
-  // removes starting slash from the provided path
-
-  // to avoid double slashes.
-
-  // Example:
-
-  // "/uploads/image.jpg"
-
-  // becomes:
-
-  // "uploads/image.jpg"
-
-  // Final full server filesystem path:
-
-  // /Applications/MAMP/htdocs/sql-pdo-oop-cms-application/uploads/image.jpg
-
+  // ROOT_PATH = project root filesystem path.
+  $rootPath = ROOT_PATH;
+  // Remove leading slash from provided path
+  // to avoid duplicate separators.
   return $rootPath . DIRECTORY_SEPARATOR . ltrim($path, DIRECTORY_SEPARATOR);
 }
 

@@ -22,6 +22,22 @@ include ROOT_PATH . "/partials/head.php";
 // 3. Render page content (components)
 include ROOT_PATH . "/partials/navbar.php";
 include ROOT_PATH . "/partials/hero.php";
+
+// GETTING DATA & HANDLE USER REGISTRATION VIA FORM SUBMISSION USING FUNCTION HELPERS FROM FUNCTIONS.PHP
+if (isPostRequest()) {
+  $email = getPostData('email');
+  $password = getPostData('password');
+
+  $user = new User();
+
+  if ($user->login($email, $password)) {
+    redirect("pages/admin/admin.php");
+  } else {
+    echo "login failed";
+  }
+}
+
+
 ?>
 
 <main class="login-page">
@@ -54,12 +70,12 @@ include ROOT_PATH . "/partials/hero.php";
         </div>
         <!-- Button -->
         <div class="form-btn__wrapper">
-          <button class="global-btn login-form__btn">enter</button>
+          <button type="submit" class="global-btn login-form__btn">enter</button>
         </div>
         <!-- Register new account -->
         <div class="register-btn__wrapper">
           <p class="register-text">Don't have an account?</p>
-          <a href="<?php echo BASE_URL; ?>/register.php" class="register-link">register here</a>
+          <a href="<?php echo BASE_URL; ?>/pages/guest/register.php" class="register-link">register here</a>
         </div>
       </div>
     </form>

@@ -2,25 +2,6 @@
 // APPLICATION INITIALIZATION
 require_once "config/init.php";
 
-// TEST DATABASE CONNECTION
-// Creates a Database object from the Database class blueprint.
-$db = new Database();
-// The Database object calls its getConnection() method.
-// The method creates a PDO database connection object.
-// The method returns that connection object.
-// The returned connection object is then stored in $conn for database communication and CRUD operations.
-$conn = $db->getConnection();
-if ($conn) {
-  echo "database connection established and stored in \$conn.";
-}
-echo "<pre>";
-var_dump($conn);
-echo "</pre>";
-
-
-
-
-
 // PAGE META DATA: define dynamic variables (title + styles)
 // 1. Define variables BEFORE head.php so it can access them.
 // head.php reads these variables and prints them into the <head>.
@@ -28,37 +9,65 @@ echo "</pre>";
 // for BASE_URL & ROOT_PATH —> boostrap.php
 $page_title = "home";
 $page_specific_stylesheet = [
-  BASE_URL . "/assets/css/index.css",
-  BASE_URL . "/assets/css/navbar.css",
-  BASE_URL . "/assets/css/hero.css",
-  BASE_URL . "/assets/css/footer.css"
+  asset_url('css/index.css'),
+  asset_url('css/navbar.css'),
+  asset_url('css/hero.css'),
+  asset_url('css/footer.css')
 ];
 
 // PAGE LAYOUT
 // 2. Load HTML structure + inject dynamic values (title + CSS)
-include ROOT_PATH . "/partials/head.php";
+include base_path('partials/head.php');
 
 // 3. Render page content (components)
 // for other components visit: footer.php
-include ROOT_PATH . "/partials/navbar.php";
-include ROOT_PATH . "/partials/hero.php";
+include base_path("partials/navbar.php");
+include base_path("partials/hero.php");
+
+// ARTICLE CLASS INSTANTIATION
+$article = new Article();
+$articles = $article->get_all();
+// echo "<pre>";
+// var_dump($article);
+// echo "</pre>";
+
 ?>
 
 
 <main class="blog-post__wrapper">
-  <div class="blog-post__contents">
-    <div class="blog-post__img-container">
-      <div class="blog-post__img"></div>
-    </div>
+  <!-- Check if the query from get_all() method returned any article rows. -->
+  <!-- we only need one blog post as template to fill in dynamic data -->
+  <?php if (!empty($articles)): ?>
+    <?php foreach ($articles as $article): ?>
+      <div class="blog-post__contents">
+        <div class="blog-post__img-container">
 
-    <div class="blog-post__body">
-      <h2 class="blog-post__title">blog post title 1</h2>
-      <p class="blog-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna.</p>
-      <a href="" class="btn btn-blog">read more</a>
-    </div>
-  </div>
+          <!-- $article = one article row from database -->
+
+          <!-- $article->image = value from image column -->
+          <?php if (!empty($article->image)): ?>
+            <img
+              src="<?php echo uploads_url($article->image); ?>"
+              class="blog-post__img"
+              alt="<?php echo htmlspecialchars($article->title); ?>">
+
+          <?php else: ?>
+            <div class="blog-post__img blog-post__img-placeholder"></div>
+          <?php endif; ?>
+        </div>
+
+        <div class="blog-post__body">
+          <h2 class="blog-post__title"><?php echo $article->title; ?></h2>
+          <p class="blog-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna.</p>
+          <a href="" class="btn btn-blog">read more</a>
+        </div>
+      </div>
+
+
+    <?php endforeach; ?>
+  <?php endif; ?>
 </main>
 
 <?php
 // 3. Render page content (components)
-include ROOT_PATH . "/partials/footer.php";
+include base_path("partials/footer.php");
